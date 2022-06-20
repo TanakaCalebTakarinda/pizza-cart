@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfect Pizza</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="//unpkg.com/alpinejs" defer></script>
+</head>
+
+<body>
+    <div class="highest"x-data="{showCart: false, 
+        largeTotal: 0, largeQty:0,
+         mediumTotal: 0, mediumQty:0, 
+         smallTotal: 0, smallQty:0, 
+         cartTotal:0}" >
+        <div class="Head">
+            <h1> Perfect pizza</h1>
+        </div>
+        <div class="nice">
+            <div class="y2">
+                <div class="pi">
+                    <img src="pizzapic/pizman.jpg" width="100" alt="">
+                </div>
+
+                <div class="slice">
+                    <h2 style="color: rgb(119, 23, 128);">A slice of heaven!!!!</h2>
+                </div>
+            </div>
+            <div class="bask">
+                <button x-on:click="showCart=true">
+                    <img src="./pizzapic/basket.jpg" width="45" alt="">
+                    Show Cart 
+                </button>
+                <strong>R0.00</strong>
+
+              <!-- <a href="" class=" basklink">
+                    <img src="./pizzapic/basket.jpg" width="45" alt="">
+                    <strong>R0.00</strong>
+                </a> --> 
+            </div>
+        </div>
+        <div class="cartb"x-show="showCart" >
+            <div>
+                <button x-on:click="showCart=false">
+                    <img src="./pizzapic/basket.jpg" width="45" alt="">
+                    Close cart 
+                </button>  
+            </div>
+            <table>
+                <tr>
+                    <td>Large</td>
+                    <td>
+                        <span x-text="largeQty"></span>
+                        <button>+</button>
+                        <button>-</button>
+                    </td>
+                    <td >
+                        R<span x-text="largeTotal.toFixed(2)">
+
+                        </span>
+                     </td>
+                </tr>
+                <tr>
+                    <td>Medium</td>
+                    <td>
+                        <span x-text="mediumQty"></span>
+                        <button>+</button>
+                        <button>-</button>
+                    </td>
+                    <td >
+                   R<span x-text="mediumTotal.toFixed(2)">
+                </span>
+                   </td>
+                </tr>
+                <tr>
+                    <td>Small</td>
+                    <td>
+                        <span x-text="smallQty"></span>
+                        <button>+</button>
+                        <button>-</button>
+                    </td>
+                    <td >
+                   R<span x-text="smallTotal.toFixed(2)"> 
+                   </span>
+
+                   </td>
+                </tr>
+                <tr>
+                    <td colspan="2">Total cost</td>
+                    <td>
+                     R<span x-text="cartTotal.toFixed(2)"></span>
+
+                     </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="message">
+                            message
+                        </div>
+                        <div>
+                            <label for="">Payment Amount</label>
+                            <input type="input" type="number" placeholder="Payment amount">
+                        </div>
+
+
+                    </td>
+                    <td>
+                        <button class="btnn">
+                            BUY
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="container">
+            <div class="box Large">
+                <h2>Large</h2>
+                <img src="pizzapic/piz1.jpg" width="200" alt="">
+                <h3>R150.00</h3>
+                <div>
+                    -Best bacon and egg pizza in the country
+
+                </div>
+                <div>-Rabbit and spinach</div>
+                <div>-Vegans Diet, Broccoli and carrot</div>
+                <button class="btn" x-on:click="largeTotal += 150;largeQty+=1">
+                    Buy
+                </button>
+            </div>
+
+            <div class="box Medium">
+                <h2>Medium</h2>
+                <img src="pizzapic/piz2.webp" width="240" alt="">
+                <h3>R120.00</h3>
+                <div>
+                    -Best cheese and lamb pizza
+                </div>
+                <div>-Avocado delight</div>
+                <div>-Chicken splash</div>
+                <button class="btn" x-on:click="mediumTotal += 120;mediumQty+=1">
+                    Buy
+                </button>
+            </div>
+
+
+            <div class="box Small">
+                <h2>Small</h2>
+                <img src="pizzapic/piz3.jpg" width="140" alt="">
+                <h3>R90.00</h3>
+                <div>
+                    -chicken and biltong pizza
+
+                </div>
+                <div>-Ostrich and Kale</div>
+                <div>-Cheese delight</div>
+                <button class="btn" x-on:click="smallTotal += 90;smallQty+=1">
+                    Buy
+                </button>
+            </div>
+        </div>
+
+        <div class="box contact">
+
+            <h2>Contact Details</h2>
+            <div> <img src="pizzapic/gif.gif" width="100" alt=""></div>
+            <div style="text-align: center;">Contact us at: 0792299958</div>
+
+            <div style="text-align: center;"> Email us at: piz@gmail.com </div>
+        </div>
+    </div>
+</body>
+
+</html>
