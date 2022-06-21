@@ -15,7 +15,34 @@
         largeTotal: 0, largeQty:0,
          mediumTotal: 0, mediumQty:0, 
          smallTotal: 0, smallQty:0, 
-         cartTotal:0}" >
+         cartTotal(){
+            return this.largeTotal + this.mediumTotal + this.smallTotal
+         },
+         buylarge(){
+            this.largeTotal += 150;
+            this.largeQty+=1
+         },
+         buymedium(){
+            this.mediumTotal += 120;
+            this.mediumQty+=1
+         },
+         buysmall(){
+            this.smallTotal += 90;
+            this.smallQty+=1
+         },
+         uylarge(){
+            this.largeTotal -= 150;
+            this.largeQty-=1
+         },
+         uymedium(){
+            this.mediumTotal -= 120;
+            this.mediumQty-=1
+         },
+         uysmall(){
+            this.smallTotal -= 90;
+            this.smallQty-=1
+         }
+        }" >
         <div class="Head">
             <h1> Perfect pizza</h1>
         </div>
@@ -34,7 +61,7 @@
                     <img src="./pizzapic/basket.jpg" width="45" alt="">
                     Show Cart 
                 </button>
-                <strong>R0.00</strong>
+                <strong> R<span x-text="cartTotal().toFixed(2)"></span></strong>
 
               <!-- <a href="" class=" basklink">
                     <img src="./pizzapic/basket.jpg" width="45" alt="">
@@ -54,8 +81,8 @@
                     <td>Large</td>
                     <td>
                         <span x-text="largeQty"></span>
-                        <button>+</button>
-                        <button>-</button>
+                        <button x-on:click="buylarge">+</button>
+                        <button x-on:click="uylarge" >-</button>
                     </td>
                     <td >
                         R<span x-text="largeTotal.toFixed(2)">
@@ -67,8 +94,8 @@
                     <td>Medium</td>
                     <td>
                         <span x-text="mediumQty"></span>
-                        <button>+</button>
-                        <button>-</button>
+                        <button  x-on:click="buymedium">+</button>
+                        <button  x-on:click="uymedium" >-</button>
                     </td>
                     <td >
                    R<span x-text="mediumTotal.toFixed(2)">
@@ -79,8 +106,8 @@
                     <td>Small</td>
                     <td>
                         <span x-text="smallQty"></span>
-                        <button>+</button>
-                        <button>-</button>
+                        <button  x-on:click="buysmall">+</button>
+                        <button x-on:click="uysmall">-</button>
                     </td>
                     <td >
                    R<span x-text="smallTotal.toFixed(2)"> 
@@ -91,7 +118,7 @@
                 <tr>
                     <td colspan="2">Total cost</td>
                     <td>
-                     R<span x-text="cartTotal.toFixed(2)"></span>
+                     R<span x-text="cartTotal().toFixed(2)"></span>
 
                      </td>
                 </tr>
