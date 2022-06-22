@@ -79,7 +79,7 @@
         <div class="nice">
             <div class="y2">
                 <div class="pi">
-                    <img src="pizzapic/pizman.jpg" width="100" alt="">
+                    <img src="pizzapic/pizman.jpg" width="150" alt="">
                 </div>
 
                 <div class="slice">
@@ -87,9 +87,8 @@
                 </div>
             </div>
             <div class="bask">
-                <button x-on:click="showCart=true">
-                    <img src="./pizzapic/basket.jpg" width="45" alt="">
-                    Show Cart
+                <button class="cart" x-on:click="showCart=true">
+                    <img src="./pizzapic/basket.jpg" width="40" alt="">Show Cart
                 </button>
                 <strong> R<span x-text="cartTotal().toFixed(2)"></span></strong>
 
@@ -101,9 +100,8 @@
         </div>
         <div class="cartb" x-show="showCart">
             <div>
-                <button x-on:click="showCart=false">
-                    <img src="./pizzapic/basket.jpg" width="45" alt="">
-                    Close cart
+                <button class="cart" x-on:click="showCart=false">
+                    <img src="./pizzapic/basket.jpg" width="40" alt="">Close cart
                 </button>
             </div>
             <table>
@@ -160,7 +158,7 @@
                             <div>
                                 <label for="">Payment Amount</label>
                                 <input class="input" type="number" placeholder="Payment amount" x-model="paymentAmount">
-                                <button x-on:click="makePayment" class="btnn">PAYMENT</button>
+                                <button x-on:click="makePayment" class="btnn">PAY NOW</button>
                             </div>
                         </div>
 
@@ -176,29 +174,39 @@
         </div>
         <div class="container">
             <div class="box Large">
+                <div class="mid">
                 <h2>Large</h2>
                 <img src="pizzapic/piz1.jpg" width="200" alt="">
                 <h3>R150.00</h3>
+            </div>
+            <div class="marg">
                 <div>
                     -Best bacon and egg pizza in the country
 
                 </div>
                 <div>-Rabbit and spinach</div>
                 <div>-Vegans Diet, Broccoli and carrot</div>
+            </div>
                 <button class="btn" x-on:click="largeTotal += 150;largeQty+=1">
                     Buy
                 </button>
-            </div>
+            
+        </div>
 
             <div class="box Medium">
+                <div class="mid">
                 <h2>Medium</h2>
-                <img src="pizzapic/piz2.webp" width="240" alt="">
+                <div class="mpic">
+                <img src="pizzapic/piz2.webp" width="240" alt="" > </div>
                 <h3>R120.00</h3>
+            </div>
+            <div class="marg">
                 <div>
                     -Best cheese and lamb pizza
                 </div>
                 <div>-Avocado delight</div>
                 <div>-Chicken splash</div>
+            </div>
                 <button class="btn" x-on:click="mediumTotal += 120;mediumQty+=1">
                     Buy
                 </button>
@@ -206,25 +214,30 @@
 
 
             <div class="box Small">
+                <div class="mid">
                 <h2>Small</h2>
-                <img src="pizzapic/piz3.jpg" width="140" alt="">
+                <div class="spic">
+                <img src="pizzapic/piz3.jpg" width="140" alt=""> </div>
                 <h3>R90.00</h3>
+            </div>
+            <div class="marg">
                 <div>
                     -chicken and biltong pizza
 
                 </div>
                 <div>-Ostrich and Kale</div>
                 <div>-Cheese delight</div>
+            </div>
                 <button class="btn" x-on:click="smallTotal += 90;smallQty+=1">
                     Buy
                 </button>
             </div>
         </div>
 
-        <div class="box contact">
+        <div class="box contact dd">
 
-            <h2>Contact Details</h2>
-            <div> <img src="pizzapic/gif.gif" width="100" alt=""></div>
+            <h2 style="text-align: center;">Contact Details</h2>
+            <div style="text-align: center;" > <img src="pizzapic/gif.gif" width="100" alt="" class="center"></div>
             <div style="text-align: center;">Contact us at: 0792299958</div>
 
             <div style="text-align: center;"> Email us at: piz@gmail.com </div>

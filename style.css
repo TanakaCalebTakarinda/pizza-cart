@@ -81,12 +81,74 @@ text-align: left;
 border: 1px solid #ccc;
 
 }
-.nice  {
+/* .nice  {
     padding: 1em;
     background-color: dodgerblue;
     display: flex;
     border-radius: 0.5em;
-    justify-content: center;
+    justify-content: center; } */
     
+
+
+.nice {
+    text-align: center;
+}
+.mid{
+    text-align: center;
 }
 
+.btn{
+    width: 30%;
+    margin-left:35%; 
+    margin-right:35%;
+}
+.marg{
+    margin-left: 15%;
+}
+.mpic{
+    margin-bottom: 3em;
+}
+.spic{
+    margin-bottom: 4em;
+}
+.Head{
+    padding: 1em;
+    background-color: dodgerblue;
+margin-bottom: 0.2cm;
+
+}
+.input {
+    margin: 1em;
+}
+.btn {
+    padding: 0.5em 0em 0.5em 0em;
+    width: 5em;
+    background-color:azure;
+    color: rgb(61, 60, 60);
+    font-weight: bold;
+    border: 0;
+    cursor: pointer;
+    border-radius: 0.25em;
+}
+.btnn{
+    background-color:azure;
+    color: rgb(61, 60, 60);
+    font-weight: bold;
+    border: 0;
+    cursor: pointer;
+    width: 6em;
+
+}
+.message {
+    padding: 1em;
+    font-weight: bold;
+    background-color: rgb(177, 196, 195);
+}
+.cart {
+    width: 9em;
+    background-color:azure;
+    color: rgb(61, 60, 60);
+    font-weight: bold;
+    border: 0;
+    cursor: pointer;
+    border-radius: 0.5em}
