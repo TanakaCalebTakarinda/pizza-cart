@@ -11,10 +11,12 @@
 </head>
 
 <body>
-    <div class="highest"x-data="{showCart: false, 
+    <div class="highest" x-data="{showCart: false, 
         largeTotal: 0, largeQty:0,
          mediumTotal: 0, mediumQty:0, 
          smallTotal: 0, smallQty:0, 
+         paymentAmount: 0,
+         paymentMessage: '',
          cartTotal(){
             return this.largeTotal + this.mediumTotal + this.smallTotal
          },
@@ -31,18 +33,46 @@
             this.smallQty+=1
          },
          uylarge(){
+            if(this.largeQty > 0){
             this.largeTotal -= 150;
-            this.largeQty-=1
+            this.largeQty-=1}
          },
          uymedium(){
+            if(this.mediumQty > 0){
             this.mediumTotal -= 120;
-            this.mediumQty-=1
+            this.mediumQty-=1}
          },
          uysmall(){
+            if(this.smallQty > 0){
             this.smallTotal -= 90;
-            this.smallQty-=1
+            this.smallQty-=1}
+         },
+         payNow:false,
+         makePayment(){
+            if (!this.paymentAmount){
+                this.paymentMessage = 'Oops, amount added!'
+            }
+            if (this.paymentAmount >= this.cartTotal() ){
+                this.paymentMessage = 'Payment made!'
+
+                setTimeout(() => {
+                    this.payNow = false;
+                    this.clearCart()
+                },3000);}
+                
+                else{
+                    this.paymentMessage = 'Payment failed'
+                }
+         },
+         clearCart(){
+           this.largeTotal= 0;
+           this.largeQty = 0;
+           this.mediumTotal = 0;
+           this.mediumQty = 0 ;
+           this.smallTotal = 0; 
+           this.smallQty = 0; 
          }
-        }" >
+        }">
         <div class="Head">
             <h1> Perfect pizza</h1>
         </div>
@@ -59,84 +89,86 @@
             <div class="bask">
                 <button x-on:click="showCart=true">
                     <img src="./pizzapic/basket.jpg" width="45" alt="">
-                    Show Cart 
+                    Show Cart
                 </button>
                 <strong> R<span x-text="cartTotal().toFixed(2)"></span></strong>
 
-              <!-- <a href="" class=" basklink">
+                <!-- <a href="" class=" basklink">
                     <img src="./pizzapic/basket.jpg" width="45" alt="">
                     <strong>R0.00</strong>
-                </a> --> 
+                </a> -->
             </div>
         </div>
-        <div class="cartb"x-show="showCart" >
+        <div class="cartb" x-show="showCart">
             <div>
                 <button x-on:click="showCart=false">
                     <img src="./pizzapic/basket.jpg" width="45" alt="">
-                    Close cart 
-                </button>  
+                    Close cart
+                </button>
             </div>
             <table>
-                <tr>
+                <tr x-show="largeQty>0">
                     <td>Large</td>
                     <td>
                         <span x-text="largeQty"></span>
                         <button x-on:click="buylarge">+</button>
-                        <button x-on:click="uylarge" >-</button>
+                        <button x-on:click="uylarge">-</button>
                     </td>
-                    <td >
+                    <td>
                         R<span x-text="largeTotal.toFixed(2)">
 
                         </span>
-                     </td>
+                    </td>
                 </tr>
-                <tr>
+                <tr x-show="mediumQty>0">
                     <td>Medium</td>
                     <td>
                         <span x-text="mediumQty"></span>
-                        <button  x-on:click="buymedium">+</button>
-                        <button  x-on:click="uymedium" >-</button>
+                        <button x-on:click="buymedium">+</button>
+                        <button x-on:click="uymedium">-</button>
                     </td>
-                    <td >
-                   R<span x-text="mediumTotal.toFixed(2)">
-                </span>
-                   </td>
+                    <td>
+                        R<span x-text="mediumTotal.toFixed(2)">
+                        </span>
+                    </td>
                 </tr>
-                <tr>
+                <tr x-show="smallQty>0">
                     <td>Small</td>
                     <td>
                         <span x-text="smallQty"></span>
-                        <button  x-on:click="buysmall">+</button>
+                        <button x-on:click="buysmall">+</button>
                         <button x-on:click="uysmall">-</button>
                     </td>
-                    <td >
-                   R<span x-text="smallTotal.toFixed(2)"> 
-                   </span>
+                    <td>
+                        R<span x-text="smallTotal.toFixed(2)">
+                        </span>
 
-                   </td>
+                    </td>
                 </tr>
-                <tr>
+                <tr x-show="cartTotal()>0">
                     <td colspan="2">Total cost</td>
                     <td>
-                     R<span x-text="cartTotal().toFixed(2)"></span>
+                        R<span x-text="cartTotal().toFixed(2)"></span>
 
-                     </td>
+                    </td>
                 </tr>
-                <tr>
+                <tr x-show="cartTotal()>0">
                     <td colspan="2">
-                        <div class="message">
-                            message
-                        </div>
-                        <div>
-                            <label for="">Payment Amount</label>
-                            <input type="input" type="number" placeholder="Payment amount">
+                        <div x-show="payNow">
+                            <div class="message" x-text="paymentMessage">
+                            </div>
+                            <div>
+                                <label for="">Payment Amount</label>
+                                <input class="input" type="number" placeholder="Payment amount" x-model="paymentAmount">
+                                <button x-on:click="makePayment" class="btnn">PAYMENT</button>
+                            </div>
                         </div>
 
 
                     </td>
                     <td>
-                        <button class="btnn">
-                            BUY
+                        <button x-on:click="payNow=true" x-show="!payNow" class="btnn">
+                            PAY
                         </button>
                     </td>
                 </tr>
